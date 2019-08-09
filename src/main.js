@@ -23,9 +23,9 @@ import * as _ajax from '@/static/js/requestSupport'
 
 import ut from '@/utils/index.js'
 
-// import loading from '@/bag/vueCommon/loading/3/l.js'
-// import reminder from '@/bag/vueCommon/errMsg/2/e'
-// import toast from '@/bag/vueCommon/toast/1/t'
+import loading from '@/vueCommon/loading/3/l.js'
+import reminder from '@/vueCommon/errMsg/2/e'
+import toast from '@/vueCommon/toast/1/t'
 
 // import VueAwesomeSwiper from 'vue-awesome-swiper'
 // import '@/static/css/swiper.css'
@@ -44,7 +44,7 @@ let mixins = {
 Vue.use(mixins)
 Vue.use(reminder)
 Vue.use(loading)
-// Vue.use(toast)
+Vue.use(toast)
 
 /* eslint-disable no-new */
 // Vue.use(VueLazyload, {

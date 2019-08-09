@@ -79,7 +79,8 @@ export default {
         var pattern = new RegExp("[`~!@#$^&*()=|{}':;',\\[\\].<>/?~！@#￥……&*（）——|{}【】‘；：”“'。，、？]");
         if (zepetoId.includes(' ') || pattern.test(zepetoId)){
           setTimeout(() => { this.$loading.show(0) }, 100)
-          return this.$reminder.show(1, {text: '崽崽id格式不支持'})
+          // return this.$reminder.show(1, {text: '崽崽id格式不支持'})
+          alert('崽崽id格式不支持')
         }
         this.$ajax.correct(zepetoId).then(res => {
           if (res.code == 200) {
