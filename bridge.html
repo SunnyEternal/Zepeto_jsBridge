@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>bridge html</title>
+    <style media="screen">
+      *{
+        margin:0;padding:0;font-size: .26rem;
+      }
+      h5{
+        margin:.2rem .1rem;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+    !function(e,t){var n=e.documentElement,i="orientationchange"in window?"orientationchange":"resize",d=(/iPad|iPhone|iPod/.test(navigator.userAgent)&&!window.MSStream,function(){var t=n.clientWidth;t&&(t>=750?(t=750,e.body.style.width="750px"):e.body.style.width=t+"px",n.style.fontSize=100*(t/750)+"px",n.dataset.width=t,n.dataset.percent=100*(t/750))});d(),e.documentElement.classList.add("iosx"+t.devicePixelRatio),e.addEventListener&&t.addEventListener(i,d,!1)}(document,window)
+    </script>
+    <div id="app">
+      <h5>
+        npm:  yarn beta  -> configuration use config/beta.js  ->  output to:  dist/beta/
+      </h5>
+      <h5>
+        npm:  yarn build  -> configuration use config/prod.js  ->  output to:  dist/release/
+      </h5>
+      <hr />
+      <hr />
+      <h5><a href="https://zhaodifont.github.io/kajicam/dist/beta/index.html">open betaUrl</a></h5>
+      <h5><a href="b612cnb://inappBrowser?url=https://zhaodifont.github.io/kajicam/dist/beta/index.html%3Fuuid%3D%7Bad_did%7D">open betaUrl in betaApp</a></h5>
+      <h5><a href="b612cn://inappBrowser?url=https://zhaodifont.github.io/kajicam/dist/release/index.html%3Fuuid%3D%7Bad_did%7D">open realUrl in realApp</a></h5>
+      <h5><a href="b612cn://inappBrowser?url=https://zhaodifont.github.io/kajicam/devshow/index.html">(单独的jsbridge)open realUrl in realApp</a></h5>
+
+    </div>
+  </body>
+</html>
