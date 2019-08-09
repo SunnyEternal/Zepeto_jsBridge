@@ -13,11 +13,10 @@
 
 <script>
 import Handlers from '@/static/js/handlers'
-import BrowserChecker from '@/bag/utils/BrowserChecker'
-// import { Render, WaitZEPETO } from '@/static/zaizaiJsBridge.js' // 测试
-// import { Render, WaitZEPETO } from '@/bag/bridge/CombineBridge.js'
-import CombineImg from '@/bag/bridge/CombineBridge2.js'
+import BrowserChecker from '@/utils/BrowserChecker'
 
+import renderOption from '@/bridge/params/renderOption'
+import renderClass from '@/bridge/renderClass'
 
 export default {
   data(){
@@ -44,15 +43,15 @@ export default {
           this.$myState.zepetoId = this.userId
           clearInterval(timer) 
         }
-        console.log(`userId:${this.userId}`)
-        console.log(`whereIs:${this.whereIs}`)
+        // console.log(`userId:${this.userId}`)
+        // console.log(`whereIs:${this.whereIs}`)
       }, 20)
 
       setTimeout(() => {
         this.isInApp = Handlers.myApp.isInApp
-        console.log(`isInApp:${Handlers.myApp.isInApp}`)
+        // console.log(`isInApp:${Handlers.myApp.isInApp}`)
         if(Handlers.myApp.isInApp){
-          console.log('在 App 里')
+          // console.log('在 App 里')
         }
         clearInterval(timer)
       }, 1500)
@@ -60,51 +59,15 @@ export default {
     },
     // 两个人物形象合成一个
     twoCombine() {
-      CombineImg.Render({
-        "type": "photobooth",
-        "renderData": "4XF7OvHpnaEaOQsEUSkimi",
-        "width": 512,
-        "height": 512,
-        "bones": [
-        ],
-        "characterHashCodes": [
-          "MYKURU",
-          "MYKURU"
-        ]},
-        url => {
-          var img = new Image();
-          img.src = url;
-          img.style.width = '200px'
-          document.body.appendChild(img);
-        }, error => {
-          console.log(error)
-        }
-      )
+      let params = new renderOption({width: 400, height: 400})
+      renderClass.render(params).then(url => {
+        let img = new Image();
+        img.src = url;
+        document.body.append(img);
+      }).catch(err => {
+        console.log(err)
+      });
       
-
-      // let opts = {
-      //   "type": "photobooth",
-      //   "renderData": "4XF7OvHpnaEaOQsEUSkimi",
-      //   "width": 512,
-      //   "height": 512,
-      //   "bones": [
-      //   ],
-      //   "characterHashCodes": [
-      //     "MYKURU",
-      //     "MYKURU"
-      //   ]
-      // }
-      // // 合成
-      // WaitZEPETO(function () {
-      //   Render(opts, url => {
-      //     var img = new Image();
-      //     img.src = url;
-      //     img.style.width = '200px'
-      //     document.body.appendChild(img);
-      //   }, error => {
-      //     console.log(error)
-      //   })
-      // })
     },
     startBtn() {
       try {
@@ -121,12 +84,9 @@ export default {
         this.$ajax.correct(zepetoId).then(res => {
           if (res.code == 200) {
             this.$ajax.getUserActions({characterHashCodes: [zepetoId]}).then(res => {
-              // this.$loading.show(0)
-              // this.$myState.base64Imgs = res
               this.myImgURL = res[0]
             })
           } else {
-            this.$loading.show(0)
             this.$reminder.show(1, {text: res.msg})
           }
         })

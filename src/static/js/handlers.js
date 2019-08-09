@@ -1,17 +1,8 @@
-// import SaveShareParam from "@/bag/bridge/param/SaveShareParam";
-// import BridgeFactory from '@/bag/bridge/BridgeFactory'
-// import EventCameraParam from '@/bag/bridge/param/EventCameraParam'
-import BrowserChecker from '@/bag/utils/BrowserChecker'
-// import MegaPixImage from '@/bag/plugins/megapix-image'
-// 在app.vue里添加菜单dom 这里调用dom操作方法
-// import {showSelectBox, hideSelectBox} from '@/bag/vueCommon/cameraMenu/2/c'
-// import '@/bag/plugins/html2canvas/h2c'
-import imgSupport from '@/bag/utils/imgSupport'
+import BrowserChecker from '@/utils/BrowserChecker'
+import imgSupport from '@/utils/imgSupport'
 import config from '@/config/index'
 import vm from '../../main'
 
-// let modList = [require('@/static/img/m-mod1.jpg'), require('@/static/img/m-mod2.jpg'), require('@/static/img/m-mod3.jpg'), require('@/static/img/m-mod4.jpg'),
-// require('@/static/img/w-mod1.jpg'), require('@/static/img/w-mod2.jpg'), require('@/static/img/w-mod3.jpg'), require('@/static/img/w-mod4.jpg')]
  // 项目名+站内外 统计用
 let EventFullPath = '???'
 

@@ -21,10 +21,10 @@ import router from './router/r'
 
 import * as _ajax from '@/static/js/requestSupport'
 
-import ut from '@/bag/utils/index.js'
+import ut from '@/utils/index.js'
 
-import loading from '@/bag/vueCommon/loading/3/l.js'
-import reminder from '@/bag/vueCommon/errMsg/2/e'
+// import loading from '@/bag/vueCommon/loading/3/l.js'
+// import reminder from '@/bag/vueCommon/errMsg/2/e'
 // import toast from '@/bag/vueCommon/toast/1/t'
 
 // import VueAwesomeSwiper from 'vue-awesome-swiper'
