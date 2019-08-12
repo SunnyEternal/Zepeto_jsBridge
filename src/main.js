@@ -1,60 +1,68 @@
 import 'babel-polyfill'
-import 'zepto/src/zepto' // me
-import 'zepto/src/event' // me
+import Handlers from '@/utils/handlers'
+import renderOption from '@/bridge/params/renderOption'
+import renderClass from '@/bridge/renderClass'
 
-import 'zepto/src/ajax'
-
-import '@/static/css/reset.scss'
-
-// import '@/bag/plugins/ext' // me
-
-// import '@/bag/plugins/EZGesture'
-
-// import '@/bag/plugins/canvas2image' // me
-// import '@/bag/plugins/html2canvas/html2canvas.050beta4.min.js' // me
-
-// import VueLazyload from 'vue-lazyload'
-
-import Vue from 'vue'
-import App from './App'
-import router from './router/r'
-
-import * as _ajax from '@/static/js/requestSupport'
-
-import ut from '@/utils/index.js'
-
-import loading from '@/vueCommon/loading/3/l.js'
-import reminder from '@/vueCommon/errMsg/2/e'
-import toast from '@/vueCommon/toast/1/t'
-
-// import VueAwesomeSwiper from 'vue-awesome-swiper'
-// import '@/static/css/swiper.css'
-
-// Vue.use(VueAwesomeSwiper)
-
-let mixins = {
-  install(vue, options) {
-    vue.prototype.$ut = ut
-    vue.prototype.$ajax = _ajax
-    vue.prototype.$myState = {
-      upload: false
-    }
-  }
+let appState = {
+  isAnd: false,
+  isIos: false,
+  isInApp: false
 }
-Vue.use(mixins)
-Vue.use(reminder)
-Vue.use(loading)
-Vue.use(toast)
+let zepetoId = null
 
-/* eslint-disable no-new */
-// Vue.use(VueLazyload, {
-//     error:require('@/static/img/blank.jpg'),
-//     loading:require('@/static/img/blank.jpg')
-// })
-let v1 = new Vue({
-  el: '#app',
-  router,
-  template: '<App/>',
-  components: { App }
-})
-export default v1
+// 检测是否在app内 和 获取zepetoId
+init();
+
+function init() {
+  let timer = setInterval(() => {
+    Handlers.checkAppInfo()
+    if (window.ZEPETO) {
+      appState.isInApp = true
+      zepetoId = window.ZEPETO.userInfo.hashCode || ''
+      document.querySelector('.zepetoId').innerText = zepetoId
+      appState.isIos = Handlers.myApp.isIos ? Handlers.myApp.isIos : false
+      appState.isAnd = Handlers.myApp.isAnd ? Handlers.myApp.isAnd : false
+      document.querySelector('.baseState').innerText = JSON.stringify(appState)
+      console.log(appState)
+      clearInterval(timer) 
+    }
+  }, 20)
+
+  setTimeout(() => {
+    clearInterval(timer)
+  }, 1500)
+}
+
+// 生成单个人物形象
+let combineBtn1 = document.querySelector('#combine')
+combineBtn1.onclick = function () {
+  // 在App内
+  if (!Handlers.myApp.isInApp) {
+    return document.querySelector('.combineImg').innerText = '请在App中尝试'
+  }
+  let params = new renderOption({renderData: "4qJxCsI8tm2qegEAbfowMl", width: 400, height: 400, characterHashCodes: ["VLUFUV"]})
+  renderClass.render(params).then(url => {
+    let img = new Image();
+    img.src = url;
+    document.querySelector('.combineImg').append(img);
+  }).catch(err => {
+    console.log(err)
+  });
+}
+
+// 生成两个人物形象
+let combineBtn2 = document.querySelector('#combineTwo')
+combineBtn2.onclick = function () {
+  // 在App内
+  if (!Handlers.myApp.isInApp) {
+    return document.querySelector('.combineImgTwo').innerText = '请在App中尝试'
+  }
+  let params = new renderOption({width: 400, height: 400})
+  renderClass.render(params).then(url => {
+    let img = new Image();
+    img.src = url;
+    document.querySelector('.combineImgTwo').append(img);
+  }).catch(err => {
+    console.log(err)
+  });
+}

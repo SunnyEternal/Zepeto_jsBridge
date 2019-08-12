@@ -18,19 +18,20 @@
     !function(e,t){var n=e.documentElement,i="orientationchange"in window?"orientationchange":"resize",d=(/iPad|iPhone|iPod/.test(navigator.userAgent)&&!window.MSStream,function(){var t=n.clientWidth;t&&(t>=750?(t=750,e.body.style.width="750px"):e.body.style.width=t+"px",n.style.fontSize=100*(t/750)+"px",n.dataset.width=t,n.dataset.percent=100*(t/750))});d(),e.documentElement.classList.add("iosx"+t.devicePixelRatio),e.addEventListener&&t.addEventListener(i,d,!1)}(document,window)
     </script>
     <div id="app">
-      <h5>
+      <!-- <h5>
         npm:  yarn beta  -> configuration use config/beta.js  ->  output to:  dist/beta/
       </h5>
       <h5>
         npm:  yarn build  -> configuration use config/prod.js  ->  output to:  dist/release/
       </h5>
       <hr />
-      <hr />
+      <hr /> -->
       <h5><a href="https://sunnyeternal.github.io/Zepeto_jsBridge/dist/beta/index.html#/index">open betaUrl</a></h5>
-      <!-- ZEPETO://HOME/WEBVIEW?url= -->
-      <h5><a href="ZEPETO://HOME/WEBVIEW?url=https://sunnyeternal.github.io/Zepeto_jsBridge/dist/beta/index.html#/index">open betaUrl in betaApp</a></h5>
-      <h5><a href="ZEPETO://HOME/WEBVIEW?url=https://sunnyeternal.github.io/Zepeto_jsBridge/dist/release/index.html#/index">open realUrl in realApp</a></h5>
-      <h5><a href="b612cnb://inappBrowser?url=https://zhaodifont.github.io/kajicam/dist/beta/index.html%3Fuuid%3D%7Bad_did%7D">B612</a></h5>
+      <h5>复制该段代码，在Zepeto设置空白处多次点击（beta、real都可以）：
+        <p>ZEPETO://HOME/WEBVIEW?url=https://sunnyeternal.github.io/Zepeto_jsBridge/dist/release/index.html#/index</p>
+      </h5>
+      <!-- <h5><a href="ZEPETO://HOME/WEBVIEW?url=https://sunnyeternal.github.io/Zepeto_jsBridge/dist/release/index.html#/index">open realUrl in realApp</a></h5> -->
+      <!-- <h5><a href="b612cnb://inappBrowser?url=https://zhaodifont.github.io/kajicam/dist/beta/index.html%3Fuuid%3D%7Bad_did%7D">B612</a></h5> -->
       <!-- <h5><a href="b612cn://inappBrowser?url=https://zhaodifont.github.io/kajicam/devshow/index.html">(单独的jsbridge)open realUrl in realApp</a></h5> -->
 
     </div>

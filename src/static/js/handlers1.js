@@ -1,7 +1,7 @@
 import BrowserChecker from '@/utils/BrowserChecker'
 import imgSupport from '@/utils/imgSupport'
 import config from '@/config/index'
-import vm from '../../main'
+// import vm from '../../main'
 
  // 项目名+站内外 统计用
 let EventFullPath = '???'
