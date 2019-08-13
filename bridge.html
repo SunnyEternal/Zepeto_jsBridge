@@ -4,12 +4,33 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>bridge html</title>
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
     <style media="screen">
       *{
-        margin:0;padding:0;font-size: .26rem;
+        margin:0;padding:0;font-size: .3rem;
       }
-      h5{
-        margin:.2rem .1rem;
+      .main{
+        padding: .32rem;
+        box-sizing: border-box;
+        color: #333;
+      }
+      h3{
+        margin:.1rem 0;
+      }
+      .copy{
+        display: inline-block;
+        width: 1.4rem;
+        height: .56rem;
+        line-height: .56rem;
+        border-radius: .4rem;
+        margin-top: .2rem;
+        background: orange;
+        color: #fff;
+        text-align: center;
+      }
+      .info{
+        color: lightseagreen;
+        font-size: .24rem;
       }
     </style>
   </head>
@@ -17,23 +38,35 @@
     <script>
     !function(e,t){var n=e.documentElement,i="orientationchange"in window?"orientationchange":"resize",d=(/iPad|iPhone|iPod/.test(navigator.userAgent)&&!window.MSStream,function(){var t=n.clientWidth;t&&(t>=750?(t=750,e.body.style.width="750px"):e.body.style.width=t+"px",n.style.fontSize=100*(t/750)+"px",n.dataset.width=t,n.dataset.percent=100*(t/750))});d(),e.documentElement.classList.add("iosx"+t.devicePixelRatio),e.addEventListener&&t.addEventListener(i,d,!1)}(document,window)
     </script>
-    <div id="app">
-      <!-- <h5>
-        npm:  yarn beta  -> configuration use config/beta.js  ->  output to:  dist/beta/
-      </h5>
-      <h5>
-        npm:  yarn build  -> configuration use config/prod.js  ->  output to:  dist/release/
-      </h5>
-      <hr />
-      <hr /> -->
-      <h5><a href="https://sunnyeternal.github.io/Zepeto_jsBridge/dist/beta/index.html#/index">open betaUrl</a></h5>
-      <h5>复制该段代码，在Zepeto设置空白处多次点击（beta、real都可以）：
-        <p>ZEPETO://HOME/WEBVIEW?url=https://sunnyeternal.github.io/Zepeto_jsBridge/dist/release/index.html#/index</p>
-      </h5>
-      <!-- <h5><a href="ZEPETO://HOME/WEBVIEW?url=https://sunnyeternal.github.io/Zepeto_jsBridge/dist/release/index.html#/index">open realUrl in realApp</a></h5> -->
-      <!-- <h5><a href="b612cnb://inappBrowser?url=https://zhaodifont.github.io/kajicam/dist/beta/index.html%3Fuuid%3D%7Bad_did%7D">B612</a></h5> -->
-      <!-- <h5><a href="b612cn://inappBrowser?url=https://zhaodifont.github.io/kajicam/devshow/index.html">(单独的jsbridge)open realUrl in realApp</a></h5> -->
-
+    <div class="main">
+      <h3>复制下面链接，打开Zepeto崽崽，进入设置，</h3>
+      <h3>在空白处多次点击（beta或real）直至进入页面：</h3>
+      <br>
+      <p>ZEPETO://HOME/WEBVIEW?url=
+        https://sunnyeternal.github.io/
+        Zepeto_jsBridge/dist/release/index.html</p>
+      <p id="copyBtn" class="copy" data-clipboard-text="ZEPETO://HOME/WEBVIEW?url=https://sunnyeternal.github.io/Zepeto_jsBridge/dist/release/index.html" 
+        data-clipboard-action="copy">
+        复制
+      </p>
+      <br>
+      <br>
+      <p class="info">未复制...</p>
     </div>
   </body>
+  <script>
+  let copyBtn = document.querySelector('#copyBtn')
+  copyBtn.onclick = function() {
+    let timer = null;
+    let clipboard = new ClipboardJS('.copy');
+    clipboard.on('success', function () {
+      document.querySelector('.info').innerText = '复制成功'
+      clearTimeout(timer)
+    });
+    clipboard.on('error', function () {
+      clearTimeout(timer)
+    });
+  }  
+  
+  </script>
 </html>
