@@ -16,7 +16,7 @@ ZEPETO://HOME/WEBVIEW?url=h5链接
 <a href="ZEPETO://WEBVIEW/CLOSE">关闭图标<a>
 ```
             
-### 三、引入jsBridge
+### 三、引入jsBridge（2.9.2版本开始支持）
 
 ```
 // main.js
