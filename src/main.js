@@ -1,4 +1,5 @@
 import 'babel-polyfill'
+import loading from '@/common/loading.js'
 import Handlers from '@/utils/handlers'
 import renderOption from '@/bridge/params/renderOption'
 import renderClass from '@/bridge/renderClass'
@@ -11,6 +12,7 @@ let appState = {
 let zepetoId = null
 
 // 检测是否在app内 和 获取zepetoId
+loading(1)
 init();
 
 function init() {
@@ -24,11 +26,13 @@ function init() {
       appState.isAnd = Handlers.myApp.isAnd ? Handlers.myApp.isAnd : false
       document.querySelector('.baseState').innerText = JSON.stringify(appState)
       console.log(appState)
+      loading(0)
       clearInterval(timer) 
     }
   }, 20)
 
   setTimeout(() => {
+    loading(0)
     clearInterval(timer)
   }, 1500)
 }
@@ -40,13 +44,16 @@ combineBtn1.onclick = function () {
   if (!Handlers.myApp.isInApp) {
     return document.querySelector('.combineImg').innerText = '请在App中尝试'
   }
+  loading(1)
   let params = new renderOption({renderData: "4qJxCsI8tm2qegEAbfowMl", width: 400, height: 400, characterHashCodes: ["VLUFUV"]})
   renderClass.render(params).then(url => {
     let img = new Image();
     img.src = url;
     document.querySelector('.combineImg').append(img);
+    loading(0)
   }).catch(err => {
     console.log(err)
+    loading(0)
   });
 }
 
@@ -57,12 +64,15 @@ combineBtn2.onclick = function () {
   if (!Handlers.myApp.isInApp) {
     return document.querySelector('.combineImgTwo').innerText = '请在App中尝试'
   }
+  loading(1)
   let params = new renderOption({width: 400, height: 400})
   renderClass.render(params).then(url => {
     let img = new Image();
     img.src = url;
     document.querySelector('.combineImgTwo').append(img);
+    loading(0)
   }).catch(err => {
     console.log(err)
+    loading(0)
   });
 }

@@ -51,7 +51,26 @@
       z-index:6667;
       margin-bottom: .1rem;
     }
-   
+    .cricle{
+      width:4.5rem;height:4.5rem;padding-top: 1.6rem; box-sizing: border-box; text-align: center;border-radius: .3rem;overflow: hidden;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: #fff;
+    }
+    .loading.run .loadingIcon{
+      will-change: transform;
+      animation: loadRun 1.8s linear infinite;
+    }
+    @keyframes loadRun{
+      0%{
+        transform:rotateZ(0deg);
+      }
+      100%{
+        transform:rotateZ(360deg);
+      }
+    }
     </style>
   </head>
   <script>
@@ -63,7 +82,7 @@
       s.parentNode.insertBefore(hm, s);
     })();
 
-    // var vConsole = new VConsole();
+    var vConsole = new VConsole();
   </script>
 
 <body style="background-color: #f8e7c9;">
@@ -92,6 +111,13 @@
 
     <button type="button" id="combine" class="common">生成单个人物形象</button><br>
     <div class="combineImg"></div><br>
+
+    <div class="loading" style="display: none; z-index:600;">
+      <div class="cricle">
+        <img src="static/img/loading-icon.png" class="loadingIcon" style="width:1.3rem; z-index:601;"/>
+      </div>
+    </div>
+
   </div>
   
 </body>
